@@ -77,3 +77,12 @@ export const updateGadget = async(req:Request, res:Response)=>{
 
   res.json(upadtedGadget)
 }
+
+export const selfDistruct =async(req:Request, res:Response)=>{
+  
+  const {id}=req.params
+  const confirmationCode = Math.floor(Math.random() * 900000) + 100000;
+  
+  res.json({ message: `Self-destruct sequence initiated for gadget ${id}`, confirmationCode });
+
+}

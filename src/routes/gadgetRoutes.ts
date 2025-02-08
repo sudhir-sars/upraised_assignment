@@ -14,6 +14,7 @@ router.post('/', createGadget);
 router.get('/', getGadget);
 router.delete('/:id', deleteGadget);
 router.patch('/:id', updateGadget);
+router.patch('/:id/self-destruct', updateGadget);
 
 
 export default router;
