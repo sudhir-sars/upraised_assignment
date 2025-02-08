@@ -29,3 +29,6 @@ Thumbs.db
 
 # Other
 coverage/
+
+# Ignore Prisma migration files
+prisma/migrations/
