@@ -4,17 +4,15 @@ import {
   createGadget,
   deleteGadget,
   getGadget,
-  updateGadget
-} from './handlers/gadgetHandler';
+  updateGadget,
+} from '../handlers/gadgetHandler';
 
 const router = Router();
-
 
 router.post('/', createGadget);
 router.get('/', getGadget);
 router.delete('/:id', deleteGadget);
 router.patch('/:id', updateGadget);
 router.patch('/:id/self-destruct', updateGadget);
-
 
 export default router;
