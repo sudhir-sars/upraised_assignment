@@ -52,7 +52,7 @@ export const getGadget =  async (req :Request, res:Response)=>{
 export const deleteGadget = async (req: Request, res: Response) => {
   
   const { id } = req.params;
-  
+
   const decommissionedGadget = await prisma.gadget.update({
     where: { id },
     data: {
@@ -64,3 +64,16 @@ export const deleteGadget = async (req: Request, res: Response) => {
 
 
 };
+
+export const updateGadget = async(req:Request, res:Response)=>{
+
+  const {id}=req.params;
+  const data = req.body;
+
+  const upadtedGadget=await prisma.gadget.update({
+    where:{id},
+    data
+  })
+
+  res.json(upadtedGadget)
+}

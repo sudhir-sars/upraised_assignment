@@ -4,6 +4,7 @@ import {
   createGadget,
   deleteGadget,
   getGadget,
+  updateGadget
 } from './handlers/gadgetHandler';
 
 const router = Router();
@@ -12,6 +13,7 @@ const router = Router();
 router.post('/', createGadget);
 router.get('/', getGadget);
 router.delete('/:id', deleteGadget);
+router.patch('/:id', updateGadget);
 
 
 export default router;
