@@ -16,6 +16,8 @@ const generateCodename = (): string => {
   return `${firstName} ${lastName}`;
 };
 
+//Helper: Generate random mission probability
+const generateSuccessProbability = (): number => Math.floor(Math.random() * 51) + 50;
 
 
 export const createGadget = async (req: Request, res: Response) => {
@@ -33,3 +35,16 @@ export const createGadget = async (req: Request, res: Response) => {
   
 };
 
+export const getGadget =  async (req :Request, res:Response)=>{
+
+  const { status } = req.query;
+    const where = status ? { status: status as GadgetStatus } : {};
+    const gadgets = await prisma.gadget.findMany({ where });
+    
+    const gadgetsWithProbability = gadgets.map(gadget => ({
+      ...gadget,
+      missionSuccessProbability: `${generateSuccessProbability()}%`
+    }));
+    res.json(gadgetsWithProbability);
+
+}
