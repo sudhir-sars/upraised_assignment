@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { PrismaClient, GadgetStatus } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
-import { firstNames, lastNames } from '../routes/utils';
+import { firstNames, lastNames } from '../utils';
 
 const prisma = new PrismaClient();
 

@@ -14,18 +14,16 @@ export const registerUser = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const { userName, password } = req.body;
 
   if (!userName || !password) {
-    return res
-      .status(400)
-      .json({ error: 'Username and password are required.' });
+    res.status(400).json({ error: 'Username and password are required.' });
   }
 
   const existingUser = await prisma.user.findUnique({ where: { userName } });
   if (existingUser) {
-    return res.status(409).json({ error: 'User already exists.' });
+    res.status(409).json({ error: 'User already exists.' });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -45,4 +43,5 @@ export const registerUser = async (
   );
 
   res.status(201).json({ user: newUser, token });
+  next();
 };
