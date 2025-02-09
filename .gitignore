@@ -14,8 +14,6 @@ build/
 # Logs
 *.log
 
-# npm package lock
-package-lock.json
 
 # Debug files
 .vscode/
