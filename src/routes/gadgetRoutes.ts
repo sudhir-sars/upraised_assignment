@@ -5,6 +5,7 @@ import {
   deleteGadget,
   getGadget,
   updateGadget,
+  selfDistruct,
 } from '../handlers/gadgetHandler';
 import { authenticateJWT } from '../middlewares/authMiddleware';
 
@@ -17,6 +18,6 @@ router.post('/', createGadget);
 router.get('/', getGadget);
 router.delete('/:id', deleteGadget);
 router.patch('/:id', updateGadget);
-router.patch('/:id/self-destruct', updateGadget);
+router.patch('/:id/self-destruct', selfDistruct);
 
 export default router;
