@@ -32,13 +32,15 @@
     "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
   },
   "husky": {
     "hooks": {
@@ -50,5 +52,7 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "type": "module"
+  
 }

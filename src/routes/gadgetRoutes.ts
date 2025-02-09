@@ -6,8 +6,11 @@ import {
   getGadget,
   updateGadget,
 } from '../handlers/gadgetHandler';
+import { authenticateJWT } from '../middlewares/authMiddleware';
 
 const router = Router();
+
+router.use(authenticateJWT);
 
 router.post('/', createGadget);
 router.get('/', getGadget);
