@@ -6,6 +6,7 @@ dotenv.config();
 
 const jwtSecret = process.env.JWT_SECRET;
 
+//Middleware to authenticate JWT tokens.
 export const authenticateJWT = (
   req: Request,
   res: Response,

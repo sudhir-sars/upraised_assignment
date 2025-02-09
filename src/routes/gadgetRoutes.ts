@@ -10,6 +10,7 @@ import { authenticateJWT } from '../middlewares/authMiddleware';
 
 const router = Router();
 
+// Apply authentication middleware to all gadget routes
 router.use(authenticateJWT);
 
 router.post('/', createGadget);

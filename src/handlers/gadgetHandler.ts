@@ -6,7 +6,7 @@ import { firstNames, lastNames } from '../utils';
 
 const prisma = new PrismaClient();
 
-// Helper: Generate random codename from a list
+//Generates a random codename using predefined names.
 const generateCodename = (): string => {
   const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
   const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
@@ -14,10 +14,11 @@ const generateCodename = (): string => {
   return `${firstName} ${lastName}`;
 };
 
-//Helper: Generate random mission probability
+//Generates a random mission success probability between 50% and 100%.
 const generateSuccessProbability = (): number =>
   Math.floor(Math.random() * 51) + 50;
 
+//Creates a new gadget.
 export const createGadget = async (req: Request, res: Response) => {
   const { name } = req.body;
   const codename = generateCodename();
@@ -31,6 +32,7 @@ export const createGadget = async (req: Request, res: Response) => {
   res.status(201).json(newGadget);
 };
 
+//Retrieves gadgets, optionally filtered by status.
 export const getGadget = async (req: Request, res: Response) => {
   const { status } = req.query;
   const where = status ? { status: status as GadgetStatus } : {};
@@ -43,6 +45,7 @@ export const getGadget = async (req: Request, res: Response) => {
   res.json(gadgetsWithProbability);
 };
 
+//Marks a gadget as decommissioned.
 export const deleteGadget = async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -56,6 +59,7 @@ export const deleteGadget = async (req: Request, res: Response) => {
   res.json(decommissionedGadget);
 };
 
+// Updates a gadget's details.
 export const updateGadget = async (req: Request, res: Response) => {
   const { id } = req.params;
   const data = req.body;
@@ -68,6 +72,7 @@ export const updateGadget = async (req: Request, res: Response) => {
   res.json(upadtedGadget);
 };
 
+//Initiates a self-destruct sequence for a gadget.
 export const selfDistruct = async (req: Request, res: Response) => {
   const { id } = req.params;
   const confirmationCode = Math.floor(Math.random() * 900000) + 100000;
