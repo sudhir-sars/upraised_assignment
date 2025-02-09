@@ -23,6 +23,7 @@ export const registerUser = async (
     // Check if both userName and password are provided
     if (!userName || !password) {
       res.status(400).json({ error: 'Username and password are required.' });
+      return;
     }
 
     // Check if a user with the given userName already exists in the database
