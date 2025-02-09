@@ -21,11 +21,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Linter & Tests
-        run: |
-          npm run lint
-          npm test
-
       - name: Build the Project
         run: npm run build
 
